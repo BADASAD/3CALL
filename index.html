@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voice Call App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928DAB);
+      color: white;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #00ffcc;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 16px;
+    }
+    input, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #00ffcc;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+    #status {
+      margin-top: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    #warning {
+      display: none;
+      background-color: red;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>📞 Voice Call App</h2>
+  <div class="container">
+    <input id="my-custom-id" placeholder="Enter Your Custom ID (e.g., ANS123)">
+    <button onclick="saveCustomId()">Set My ID</button>
+    <p>Your ID: <span id="my-id">Not Set</span></p>
+    <input id="peer-id" placeholder="Enter Peer ID to call">
+    <button onclick="callPeer()" id="call-btn">Call</button>
+    <button onclick="toggleMute()">Mute</button>
+    <button onclick="toggleHold()">Hold</button>
+    <button onclick="startRecording()">Start Recording</button>
+    <button onclick="endCall()">End Call</button>
+    <div id="status">Status: Idle</div>
+    <div id="warning">🚫 You have reached the daily call limit or are misusing the app!</div>
+  </div>
+  <audio id="remoteAudio" autoplay></audio>
+  <audio id="ringtone" src="ringtone.mp3" preload="auto"></audio>
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
